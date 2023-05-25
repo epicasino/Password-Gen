@@ -77,10 +77,11 @@ function writePassword() {
 // Select, Copies, and Alerts User when #copy button is pressed
 function copyPassword() {
   const copyText = document.querySelector("#password");
-  copyText.select();
-  navigator.clipboard.writeText(copyText.value);
-
-  alert("Text Copied!");
+  if (confirm("Would you like to copy your password?")) {
+    copyText.select();
+    navigator.clipboard.writeText(copyText.value);
+    alert("Text Copied!");
+  } else return;
 }
 
 // Add event listener to generate button
