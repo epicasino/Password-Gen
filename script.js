@@ -1,6 +1,6 @@
 // Assignment Code
 const generateBtn = document.querySelector("#generate");
-const copyBtn = document.getElementById("copy")
+const copyBtn = document.getElementById("copy");
 const upperBtn = document.getElementById("upperCaseCheck");
 const lowerBtn = document.getElementById("lowerCaseCheck");
 const numberBtn = document.getElementById("numbersCheck");
@@ -15,34 +15,48 @@ const chars = {
 };
 
 function generatePassword() {
+  // Two new password variables, set to empty string to implement Addition assignment (+=)
   let passwordResult = "";
   let charSet = "";
+
   let passwordLength = numBox.value;
-  console.log (numBox.value);
+  console.log(numBox.value);
 
   //Checks if uppercase, lowercase, etc boxes are selected
   if (upperBtn.checked) {
-    console.log(upperBtn.checked);
+    console.log("Upper Case Button Selected: " + upperBtn.checked);
     charSet += chars.upperCase;
   }
   if (lowerBtn.checked) {
-    console.log(lowerBtn.checked);
+    console.log("Lower Case Button Selected: " + lowerBtn.checked);
     charSet += chars.lowerCase;
   }
   if (numberBtn.checked) {
-    console.log(numberBtn.checked);
+    console.log("Number Button Selected: " + numberBtn.checked);
     charSet += chars.num;
   }
   if (specialBtn.checked) {
-    console.log(specialBtn.checked);
+    console.log("Special Character Button Selected: " + specialBtn.checked);
     charSet += chars.special;
-  }  
-  if (!specialBtn.checked && !numberBtn.checked && !lowerBtn.checked && !upperBtn.checked) {
-    alert('No boxes selected! Please choose one to set parameters.')
+  }
+
+  //If empty password length, if no buttons are checked, website will alert user
+  if (
+    !specialBtn.checked &&
+    !numberBtn.checked &&
+    !lowerBtn.checked &&
+    !upperBtn.checked
+  ) {
+    alert("No boxes selected! Please choose one to set parameters.");
+  }
+  if (!passwordLength) {
+    alert(
+      "No Password Length selected! Please input number to set parameters."
+    );
   }
 
   //for loop for password creation
-  for (i = 0; i < (passwordLength); i++) {
+  for (i = 0; i < passwordLength; i++) {
     passwordResult += charSet.charAt(
       Math.floor(Math.random() * charSet.length)
     );
@@ -57,12 +71,12 @@ function writePassword() {
   let passwordText = document.querySelector("#password");
 
   passwordText.value = password;
-  console.log(passwordText.value)
+  console.log(passwordText.value);
 }
 
 // Select, Copies, and Alerts User when #copy button is pressed
 function copyPassword() {
-  const copyText = document.querySelector("#password")
+  const copyText = document.querySelector("#password");
   copyText.select();
   navigator.clipboard.writeText(copyText.value);
 
