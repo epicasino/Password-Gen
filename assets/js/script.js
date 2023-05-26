@@ -54,6 +54,17 @@ function generatePassword() {
       "No Password Length selected! Please input number to set parameters."
     );
   }
+  if (passwordLength < 8) {
+    alert(
+      "Password Length less than 8 Characters! Please input valid number."
+    );
+    numBox.dataset.value = "";
+    passwordLength = 0;
+  } else if (passwordLength > 128) {
+    alert("Password Length more than 128 Characters! Please input valid number.");
+    numBox.dataset.value = '';
+    passwordLength = 0;
+  }
 
   //for loop for password creation
   for (i = 0; i < passwordLength; i++) {
